@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     [Header("Scene Settings")]
     [Tooltip("The name of the scene to load when Start is pressed.")]
-    public string firstLevelSceneName = "Level1"; 
+    public string firstLevelSceneName = "Level1";
 
     [Header("UI Panels")]
     [Tooltip("The main menu panel containing Start, Options, Exit buttons.")]
@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         Debug.Log($"[MainMenu] Starting game... Loading scene: {firstLevelSceneName}");
-        
+
         // Check if the scene is in Build Settings (common error)
         if (Application.CanStreamedLevelBeLoaded(firstLevelSceneName))
         {
@@ -74,12 +74,14 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("[MainMenu] Quitting Game...");
-        
+
         Application.Quit();
 
         // If running in Unity Editor, stop playing mode
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        #endif
+#endif
     }
+    public void CreditsGame()
+    { SceneManager.LoadScene("Credits"); }
 }
